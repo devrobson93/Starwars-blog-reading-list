@@ -1,45 +1,33 @@
+
+
 const getState = ({ getStore, getActions, setStore }) => {
-	return {
-		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
-	};
-};
+    return {
+        store: {
+            fav:[],
+            dataCharacter:[],
+            dataPlanet:[]
+        },
+        actions: {
+            
+            loadDataCharacter : (data)=>{
+                const store = getStore()
+                setStore({dataCharacter:store.dataCharacter.concat(data)})
+            },
+            loadDataPlanet : (data)=>{
+                const store = getStore()
+                setStore({dataPlanet:store.dataPlanet.concat(data)})
+            },
+            addFavorite:(newFav)=>{
+                const store = getStore()
+                setStore({fav:[...new Set([...store.fav, newFav])]})
+            },
+            deleteFavorite:(i)=>{
+                const store = getStore()
+                store.fav.splice(i, 1)
+                setStore({fav:[...store.fav]})
+            }
+        }
+    }
+}
 
 export default getState;

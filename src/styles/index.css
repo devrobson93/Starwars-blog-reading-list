@@ -1,3 +1,30 @@
-/* 
-    General Styles
-*/
+.slider{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.slick-slide > div {
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    margin: auto;
+}
+
+.slick-list {
+    margin: 0 10px;
+}
+
+.detail{
+    margin-right: 0;
+    margin-left: 0;
+    max-width: 100%;
+}
+
+.arrow{
+    display: "block"; 
+    background: "red"; 
+}
+
+.card-width{
+    width: 20rem;
+}
